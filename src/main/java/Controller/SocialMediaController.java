@@ -30,4 +30,14 @@ public class SocialMediaController {
     }
 
 
+    // POST localhost:8080/register endpoint
+    // POST localhost:8080/login
+    // POST localhost:8080/messages
+    // GET localhost:8080/messages
+    // GET localhost:8080/messages/{message_id}
+    // DELETE localhost:8080/messages/{message_id}
+    // PATCH localhost:8080/messages/{message_id}
+    // GET localhost:8080/accounts/{account_id}/messages
+
+
 }
