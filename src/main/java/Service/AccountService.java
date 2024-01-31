@@ -10,5 +10,15 @@ public class AccountService {
     {
         accountDAO = new AccountDAO();
     }
+
+    public Account newAccount(Account newAcc)
+    {
+        return accountDAO.newAccount(newAcc);
+    }
+
+    public Account verifyAccount(Account verAcc)
+    {
+        return null;
+    }
     
 }
