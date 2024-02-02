@@ -18,7 +18,7 @@ public class AccountService {
 
     public Account verifyAccount(Account verAcc)
     {
-        return null;
+        return accountDAO.verifyAccount(verAcc);
     }
     
 }

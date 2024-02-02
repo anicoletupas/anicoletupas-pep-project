@@ -7,8 +7,6 @@ import java.util.*;
 import java.sql.*;
 
 public class AccountDAO {
-    // make new account dao 
-    // verify login account
 
     public Account newAccount(Account newAcc)
     {
@@ -36,15 +34,16 @@ public class AccountDAO {
     {
         Connection connection = ConnectionUtil.getConnection();
         try {
-            String sql = "SELECT * FROM account WHERE username = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            String sql = "SELECT * FROM account WHERE username = ? AND password = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1, account.getUsername());
+            preparedStatement.setString(2, account.getPassword());
 
-            preparedStatement.executeUpdate();
-            ResultSet pkeyResultSet = preparedStatement.getGeneratedKeys();
+            ResultSet pkeyResultSet = preparedStatement.executeQuery();
             if(pkeyResultSet.next()){
-                // return the account matching the username and password
+                Account verifiedAcc = new Account(pkeyResultSet.getInt("account_id"), account.getUsername(), account.getPassword());
+                return verifiedAcc;
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

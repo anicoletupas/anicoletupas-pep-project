@@ -5,7 +5,6 @@ import DAO.MessageDAO;
 
 import java.util.*;
 
-// put the dao in service
 public class MessageService {
     private MessageDAO messageDAO;
 
@@ -35,19 +34,15 @@ public class MessageService {
         return messageDAO.getMessageByID(id);
     }
 
-    public void deleteMessageByID(int id) 
+    public Message deleteMessageByID(int id) 
     {
-        
+        return messageDAO.deleteMessageByID(id);
     }
 
-    public Message updateMessageByID(int id) 
+    public Message updateMessageByID(Message message, int id) 
     {
-        return messageDAO.updateMessageByID(id);
-    }
+        messageDAO.updateMessageByID(message, id);
+        return message;
 
-    // new message needs to be created
-    // retrieve all messages
-    // retrieve message by id
-    // delete message by id
-    // retrieve message from particular user
+    }
 }
